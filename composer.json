@@ -1,0 +1,15 @@
+{
+    "name": "pwc/proc-exp",
+    "authors": [
+        {
+            "name": "Paweł Wacławczyk",
+            "email": "pwaclawczyk@valuelogic.one"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "require": {}
+}
