@@ -11,5 +11,14 @@
             "": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "amphp/amp": "^2.0",
+        "amphp/aerys": "dev-master",
+        "react/http": "dev-master",
+        "zendframework/zend-diactoros": "^1.4",
+        "amphp/parallel": "^0.1.7"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^3.3"
+    }
 }

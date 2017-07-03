@@ -1,0 +1,15 @@
+version: "3.3"
+
+services:
+  redis:
+    image: redis:latest
+  tracker:
+    build:
+      context: .
+      dockerfile: inf/tracker.dockerfile
+    image: tracker:latest
+    ports:
+      - "10101"
+    volumes:
+      - ".:/app"
+    command: php --version

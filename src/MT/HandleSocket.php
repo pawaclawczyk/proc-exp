@@ -2,7 +2,6 @@
 
 namespace MT;
 
-
 class HandleSocket extends \Thread
 {
     private $socket;
@@ -16,11 +15,23 @@ class HandleSocket extends \Thread
     {
         $incoming = stream_socket_accept($this->socket);
 
-        echo "Handling...", PHP_EOL;
+        echo "Handling by {$this->getThreadId()}...", PHP_EOL;
 
-        fwrite($incoming, sprintf('Handled by %ul.%s', $this->getThreadId(), PHP_EOL));
-        fwrite($incoming, json_encode($this->stats()));
+        usleep(200000);
+
+        fwrite($incoming, sprintf('HTTP/%s %d %s', '1.1', 200, 'OK'));
+        fwrite($incoming, "\r\n");
+        fwrite($incoming, 'Content-Type: text/html');
+        fwrite($incoming, "\r\n");
+        fwrite($incoming, 'Content-Length: 2');
+        fwrite($incoming, "\r\n");
+        fwrite($incoming, 'Connection: Closed');
+        fwrite($incoming, "\r\n");
+        fwrite($incoming, "\r\n");
+        fwrite($incoming, 'OK');
         fclose($incoming);
+
+        echo PHP_EOL;
     }
 
     private function stats()
